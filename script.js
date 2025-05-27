@@ -75,11 +75,11 @@
         //   });
 
 
-          // fetch(API_ENDPOINT, {
-          //   method: "POST",
-          //   headers: { "Content-Type": "application/json" },
-          //   body: JSON.stringify(trackingData),
-          // }).catch((err) => console.error("Tracking error", err));
+          fetch(API_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(trackingData),
+          }).catch((err) => console.error("Tracking error", err));
 
 
 
