@@ -1,7 +1,7 @@
 (function () {
   const API_ENDPOINT = "http://63.177.250.141:5000/webhook"; // Replace with your actual endpoint
   let sessionStartTime = Date.now();
-  getLocation();
+  // getLocation();
   sectionLoop();
   getIPAddress();
   window.btnHistory = [];
@@ -84,8 +84,8 @@
 
 
           // Store an object
-          // const user = trackingData;
-          // localStorage.setItem('user', JSON.stringify(user));
+          const user = trackingData;
+          localStorage.setItem('user', JSON.stringify(user));
 
     },500)
   };
@@ -93,17 +93,17 @@
 
   
 //get geo location of the user
-  function getLocation() {
-    let data = "";
-    axios.get("https://ipapi.co/json/")
-      .then(response => {
-        window.locaData = response.data.city+", "+response.data.region + ", "+ response.data.country_name;
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+  // function getLocation() {
+  //   let data = "";
+  //   axios.get("https://ipapi.co/json/")
+  //     .then(response => {
+  //       window.locaData = response.data.city+", "+response.data.region + ", "+ response.data.country_name;
+  //     })
+  //     .catch(error => {
+  //       console.error('Error:', error);
+  //     });
       
-  };
+  // };
  
   function getIPAddress() {
     window.ipVal = "";
@@ -257,19 +257,19 @@ const synth = window.speechSynthesis;
 
       //testing
       // Mouse Movement
-      // document.addEventListener("mousemove", (e) => {
-      //   sendTrackingData("mouse_move", { x: e.clientX, y: e.clientY });
-      // });
+      document.addEventListener("mousemove", (e) => {
+        sendTrackingData("mouse_move", { x: e.clientX, y: e.clientY });
+      });
       // // Hover Tracking 
-      // document.addEventListener("mouseover", (e) => {
-      //   if (e.target.closest("button, a, img, .card")) {
-      //     sendTrackingData("hover", {
-      //       tag: e.target.tagName,
-      //       text: e.target.innerText || "",
-      //       class: e.target.className,
-      //     });
-      //   }
-      // });
+      document.addEventListener("mouseover", (e) => {
+        if (e.target.closest("button, a, img, .card")) {
+          sendTrackingData("hover", {
+            tag: e.target.tagName,
+            text: e.target.innerText || "",
+            class: e.target.className,
+          });
+        }
+      });
       // Input
       document.addEventListener("input", (e) => {
         if (e.target.tagName === "INPUT") {
