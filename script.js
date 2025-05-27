@@ -32,7 +32,6 @@
   }
   function sendTrackingData(eventType, extraData = {}) {
     setTimeout(() => {
-      debugger;
       const trackingData = {
           event_id: crypto.randomUUID(),
           event_type: eventType,
