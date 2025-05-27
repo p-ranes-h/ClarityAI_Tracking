@@ -32,6 +32,7 @@
   }
   function sendTrackingData(eventType, extraData = {}) {
     setTimeout(() => {
+      debugger;
       const trackingData = {
           event_id: crypto.randomUUID(),
           event_type: eventType,
@@ -61,7 +62,7 @@
           utm_content: getUTM("utm_content"),
           ...extraData,
         };
-        // console.log(trackingData);
+        console.log(trackingData);
         // axios.post(API_ENDPOINT, {
         //    method: "POST",
         //     headers: { "Content-Type": "application/json" },
@@ -226,6 +227,7 @@ const synth = window.speechSynthesis;
     });
     
     function handleClick(event){
+      debugger;
       if (event.target.textContent == "Logout") {
           sendTrackingData("logout",{
 
