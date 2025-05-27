@@ -262,19 +262,19 @@ const synth = window.speechSynthesis;
 
       //testing
       // Mouse Movement
-      document.addEventListener("mousemove", (e) => {
-        sendTrackingData("mouse_move", { x: e.clientX, y: e.clientY });
-      });
+      // document.addEventListener("mousemove", (e) => {
+      //   sendTrackingData("mouse_move", { x: e.clientX, y: e.clientY });
+      // });
       // // Hover Tracking 
-      document.addEventListener("mouseover", (e) => {
-        if (e.target.closest("button, a, img, .card")) {
-          sendTrackingData("hover", {
-            tag: e.target.tagName,
-            text: e.target.innerText || "",
-            class: e.target.className,
-          });
-        }
-      });
+      // document.addEventListener("mouseover", (e) => {
+      //   if (e.target.closest("button, a, img, .card")) {
+      //     sendTrackingData("hover", {
+      //       tag: e.target.tagName,
+      //       text: e.target.innerText || "",
+      //       class: e.target.className,
+      //     });
+      //   }
+      // });
       // Input
       document.addEventListener("input", (e) => {
         if (e.target.tagName === "INPUT") {
