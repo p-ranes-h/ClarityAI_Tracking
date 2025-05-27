@@ -174,16 +174,16 @@
     });
   });
   // Scroll Depth
-  window.addEventListener("scroll", () => {
-    const scrollDepth = Math.round(
-      (window.scrollY /
-        (document.documentElement.scrollHeight - window.innerHeight)) *
-        100
-    );
-    if (scrollDepth > 0) {
-      sendTrackingData("scroll", { scroll_depth: `${scrollDepth}%` });
-    }
-  });
+  // window.addEventListener("scroll", () => {
+  //   const scrollDepth = Math.round(
+  //     (window.scrollY /
+  //       (document.documentElement.scrollHeight - window.innerHeight)) *
+  //       100
+  //   );
+  //   if (scrollDepth > 0) {
+  //     sendTrackingData("scroll", { scroll_depth: `${scrollDepth}%` });
+  //   }
+  // });
 
   document.querySelectorAll('button').forEach(button => {
       button.addEventListener('click', handleClick);
