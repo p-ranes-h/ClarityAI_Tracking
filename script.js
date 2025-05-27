@@ -84,8 +84,8 @@
 
 
           // Store an object
-          const user = trackingData;
-          localStorage.setItem('user', JSON.stringify(user));
+          // const user = trackingData;
+          // localStorage.setItem('user', JSON.stringify(user));
 
     },500)
   };
