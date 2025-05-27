@@ -1,9 +1,9 @@
 (function () {
   const API_ENDPOINT = "http://63.177.250.141:5000/webhook"; // Replace with your actual endpoint
   let sessionStartTime = Date.now();
-  // getLocation();
+  getLocation();
   sectionLoop();
-  getIPAddress();
+  // getIPAddress();
   window.btnHistory = [];
 
 // Retrieve the object
@@ -93,31 +93,35 @@
 
   
 //get geo location of the user
-  // function getLocation() {
-  //   let data = "";
-  //   axios.get("https://ipapi.co/json/")
-  //     .then(response => {
-  //       window.locaData = response.data.city+", "+response.data.region + ", "+ response.data.country_name;
-  //     })
-  //     .catch(error => {
-  //       console.error('Error:', error);
-  //     });
-      
-  // };
- 
-  function getIPAddress() {
-    window.ipVal = "";
-    fetch('https://api.ipify.org?format=json')
+  function getLocation() {
+    let data = "";
+    fetch('https://ipapi.co/json/')
         .then(response => response.json())
         .then(data => {
             window.ipVal = data;
-            console.log("Your IP Address is:", data.ip);
+            window.locaData = window.ipVal.city+", "+window.ipVal.region + ", "+ window.ipVal.country_name;
+            console.log("dta :", data);
         })
         .catch(error => {
             ipVal = error;
             console.error('Error fetching IP address:', error);
         });
+      
   };
+ 
+  // function getIPAddress() {
+  //   window.ipVal = "";
+  //   fetch('https://api.ipify.org?format=json')
+  //       .then(response => response.json())
+  //       .then(data => {
+  //           window.ipVal = data;
+  //           console.log("Your IP Address is:", data.ip);
+  //       })
+  //       .catch(error => {
+  //           ipVal = error;
+  //           console.error('Error fetching IP address:', error);
+  //       });
+  // };
   function getBrowserInfo() {
     const ua = navigator.userAgent;
     if (ua.includes("Chrome")) return "Chrome";
@@ -228,6 +232,7 @@ const synth = window.speechSynthesis;
     
     function handleClick(event){
       debugger;
+      console.log("clicked");
       if (event.target.textContent == "Logout") {
           sendTrackingData("logout",{
 
@@ -252,6 +257,7 @@ const synth = window.speechSynthesis;
         window.btnHistory.forEach(item => {
           countMap[item] = (countMap[item] || 0) + 1;
         });
+         console.log(countMap[label]);
       return countMap[label];
     };
 
