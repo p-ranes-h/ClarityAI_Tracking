@@ -188,26 +188,7 @@
   document.querySelectorAll('button').forEach(button => {
       button.addEventListener('click', handleClick);
     });
-  //text to speech convertion
-const synth = window.speechSynthesis;
-
-  document.body.addEventListener('keyup', (e) => {
-    const tag = e.target.tagName;
-
-    // Only act if it's an input, textarea, or element with text content
-    if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.textContent) {
-      const text =
-        tag === 'INPUT' || tag === 'TEXTAREA'
-          ? e.target.value
-          : e.target.textContent;
-
-      if (text.trim() !== '') {
-        const utterThis = new SpeechSynthesisUtterance(text);
-        synth.speak(utterThis);
-        console.log(text);
-      }
-    }
-  });
+  
     //avoid copy/paste 
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && ['c', 'v', 'x'].includes(e.key.toLowerCase())) {
