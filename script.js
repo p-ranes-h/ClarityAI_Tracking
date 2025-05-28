@@ -145,23 +145,28 @@
     return "Desktop";
   };
   function sectionLoop() {
-    let count = 0;
-    sendTrackingData("session_start", {
-        startTime: new Date().toISOString().replace("T", " ")
-      })
-    const intervalId = setInterval(() => {
-      count++;
-      // console.log(`Count: ${count}`);
-      if (count >= 500){
-        clearInterval(intervalId);
-      
-        sendTrackingData("session_expired",{
-        startTime: new Date().toISOString().replace("T", " ")
-      })
-        alert("Your session has been expired!");
-        window.location.reload();
-      }
-    }, 1000);
+    if (window.sesFlag == true) {
+      console.log("im inside sectionLoop");
+       let count = 0;
+      sendTrackingData("session_start", {
+          startTime: new Date().toISOString().replace("T", " ")
+        })
+      const intervalId = setInterval(() => {
+        count++;
+        // console.log(`Count: ${count}`);
+        if (count >= 500){
+          clearInterval(intervalId);
+        
+          sendTrackingData("session_expired",{
+          startTime: new Date().toISOString().replace("T", " ")
+        })
+          alert("Your session has been expired!");
+          window.sesFlag = false;
+          window.location.reload();
+        }
+      }, 1000);
+    }
+   
   };
 
   // === TRACKING EVENTS ===
