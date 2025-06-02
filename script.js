@@ -233,46 +233,6 @@ const initialService = () => {
   //   }
   // });
 
-let scrollTimeout;
-
-    window.addEventListener('scroll', () => {
-      debugger;
-      // Debounce to prevent excessive captures during rapid scrolling
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        const scrollX = window.scrollX;
-        const scrollY = window.scrollY;
-
-        html2canvas(document.body, {
-          x: scrollX,
-          y: scrollY,
-          width: viewportWidth,
-          height: viewportHeight,
-          windowWidth: document.documentElement.scrollWidth,
-          windowHeight: document.documentElement.scrollHeight
-        }).then(canvas => {
-          // Convert the canvas to an image and append to the body (for demonstration)
-          const img = canvas.toDataURL("image/jpg");
-          const imageElement = document.createElement('img');
-          imageElement.src = img;
-          document.body.appendChild(imageElement);
-          downloadImage(img)
-        }).catch(error => {
-          console.error('Error capturing screenshot:', error);
-        });
-      }, 200); // Adjust the delay as needed
-    });
-    const  downloadImage = (base64Image, filename = 'screenshot.png') => {
-      const link = document.createElement('a');
-      link.href = base64Image;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
 const handleClick = (event) => {
       if (event.target.textContent == "Logout") {
           sendTrackingData("logout",{
@@ -604,29 +564,7 @@ window.addEventListener('blur', () => {
           };
           
 
-
-
           //mobile touch detect
-
-          // document.addEventListener('touchstart', function(event) {
-          //   console.log("touchstart")
-          //   if ((navigator.maxTouchPoints && navigator.maxTouchPoints > 0 ? "Mobile" : "WEB") == 'Mobile') {
-          //       sendTrackingData('Touch started at:', event.touches[0].clientX, event.touches[0].clientY);
-          //   }
-          // });
-
-          // document.addEventListener('touchmove', function(event) {
-          //   console.log("touchmove")
-          // });
-
-          // document.addEventListener('touchend', function(event) {
-          //   console.log("touchend")
-          //   if ((navigator.maxTouchPoints && navigator.maxTouchPoints > 0 ? "Mobile" : "WEB") == 'Mobile') {
-          //       sendTrackingData('Touch ended');
-          //   }
-            
-          // });
-
         
            ["touchstart", "touchend"].forEach((event) => {
               document.addEventListener(event, tracker);
